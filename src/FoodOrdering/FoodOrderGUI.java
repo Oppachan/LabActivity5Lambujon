@@ -2,7 +2,7 @@ package FoodOrdering;
 
 import javax.swing.*;
 
-public class FoodOrderGUI {
+public class FoodOrderGUI extends JFrame {
     JFrame frame = new JFrame("Food Ordering System");
     private JPanel panel1;
     private JCheckBox cPizza;
@@ -53,5 +53,9 @@ public class FoodOrderGUI {
             actual_price = price - (price * 0.15);
         }
         JOptionPane.showMessageDialog(panel1, "The total price is Php " + String.format("%.2f", actual_price));
+    }
+
+    public static void main(String[] args){
+
     }
 }
