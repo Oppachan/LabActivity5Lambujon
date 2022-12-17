@@ -22,21 +22,25 @@ public class SimpleCalcGUI extends JFrame {
         });
     }
 
-    public void SimpleCalc(){
-        int num1, num2, result = 0;
-        num1 = Integer.parseInt(tfNumber1.getText());
-        num2 = Integer.parseInt(tfNumber2.getText());
-        String selected = (String) cbOperations.getSelectedItem();
-        if (selected.equals("+")) {
-            result = num1 + num2;
-        }else if(selected.equals("-")){
-            result = num1 - num2;
-        }else if(selected.equals("*")){
-            result = num1 * num2;
-        }else if(selected.equals("/")){
-            result = num1 / num2;
+    public void SimpleCalc() {
+        try {
+            int num1, num2, result = 0;
+            num1 = Integer.parseInt(tfNumber1.getText());
+            num2 = Integer.parseInt(tfNumber2.getText());
+            String selected = (String) cbOperations.getSelectedItem();
+            if (selected.equals("+")) {
+                result = num1 + num2;
+            } else if (selected.equals("-")) {
+                result = num1 - num2;
+            } else if (selected.equals("*")) {
+                result = num1 * num2;
+            } else if (selected.equals("/")) {
+                result = num1 / num2;
+            }
+            lblResult.setText(String.valueOf(result));
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(panel1, "Invalid Input");
         }
-        lblResult.setText(String.valueOf(result));
     }
     public static void main(String[] args){
         SimpleCalcGUI calc = new SimpleCalcGUI();
