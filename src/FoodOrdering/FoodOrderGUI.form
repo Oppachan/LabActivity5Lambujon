@@ -178,6 +178,7 @@
             </constraints>
             <properties>
               <font size="24"/>
+              <selected value="false"/>
               <text value="None"/>
             </properties>
           </component>
@@ -187,6 +188,7 @@
             </constraints>
             <properties>
               <font size="24"/>
+              <selected value="false"/>
               <text value="5% Off"/>
             </properties>
           </component>
@@ -196,6 +198,7 @@
             </constraints>
             <properties>
               <font size="24"/>
+              <selected value="false"/>
               <text value="10% Off"/>
             </properties>
           </component>
@@ -205,6 +208,7 @@
             </constraints>
             <properties>
               <font size="24"/>
+              <selected value="false"/>
               <text value="15% Off"/>
             </properties>
           </component>
@@ -251,4 +255,13 @@
       </grid>
     </children>
   </grid>
+  <buttonGroups>
+    <group name="DiscountRButton">
+      <member id="3a74f"/>
+      <member id="3a74f"/>
+      <member id="aa6ea"/>
+      <member id="97d65"/>
+      <member id="a042b"/>
+    </group>
+  </buttonGroups>
 </form>

@@ -1,6 +1,11 @@
 package FoodOrdering;
 
+import LeapYear.LeapYearGUI;
+
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Locale;
 
 public class FoodOrderGUI extends JFrame {
     JFrame frame = new JFrame("Food Ordering System");
@@ -16,6 +21,17 @@ public class FoodOrderGUI extends JFrame {
     private JRadioButton rb5;
     private JRadioButton rb10;
     private JRadioButton rb15;
+
+    public FoodOrderGUI(){
+        btnOrder.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                FoodOrderSystem();
+                clearInputs();
+                rbNone.setSelected(true);
+            }
+        });
+    }
 
     public void FoodOrderSystem(){
         double price = 0;
@@ -55,7 +71,21 @@ public class FoodOrderGUI extends JFrame {
         JOptionPane.showMessageDialog(panel1, "The total price is Php " + String.format("%.2f", actual_price));
     }
 
-    public static void main(String[] args){
+    public void clearInputs(){
+        cPizza.setSelected(false);
+        cBurger.setSelected(false);
+        cFries.setSelected(false);
+        cSoftDrinks.setSelected(false);
+        cTea.setSelected(false);
+        cSundae.setSelected(false);
+    }
 
+
+    public static void main(String[] args){
+        FoodOrderGUI food = new FoodOrderGUI();
+        food.setContentPane(food.panel1);
+        food.setSize(500, 500);
+        food.setVisible(true);
+        food.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
