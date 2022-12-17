@@ -6,6 +6,11 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Locale;
+class NoSelectionException extends Exception{
+    public NoSelectionException(String s){
+        super(s);
+    }
+}
 
 public class FoodOrderGUI extends JFrame {
     JFrame frame = new JFrame("Food Ordering System");
@@ -33,42 +38,50 @@ public class FoodOrderGUI extends JFrame {
         });
     }
 
-    public void FoodOrderSystem(){
-        double price = 0;
-        double actual_price = 0;
+    public void FoodOrderSystem() {
+        try {
+            double price = 0;
+            double actual_price = 0;
+            if (cPizza.isSelected() || cBurger.isSelected() || cFries.isSelected() || cSoftDrinks.isSelected() || cTea.isSelected() || cSundae.isSelected()) {
+            if (cPizza.isSelected()) {
+                price += 100;
+            }
+            if (cBurger.isSelected()) {
+                price += 80;
+            }
+            if (cFries.isSelected()) {
+                price += 65;
+            }
+            if (cSoftDrinks.isSelected()) {
+                price += 55;
+            }
+            if (cTea.isSelected()) {
+                price += 50;
+            }
+            if (cSundae.isSelected()) {
+                price += 40;
+            }
 
-        if(cPizza.isSelected()){
-            price += 100;
-        }
-        if(cBurger.isSelected()){
-            price += 80;
-        }
-        if(cFries.isSelected()){
-            price += 65;
-        }
-        if(cSoftDrinks.isSelected()){
-            price += 55;
-        }
-        if(cTea.isSelected()){
-            price += 50;
-        }
-        if(cSundae.isSelected()){
-            price += 40;
-        }
+            if (rbNone.isSelected()) {
+                actual_price = price;
+            }
+            if (rb5.isSelected()) {
+                actual_price = price - (price * 0.05);
+            }
+            if (rb10.isSelected()) {
+                actual_price = price - (price * 0.1);
+            }
+            if (rb15.isSelected()) {
+                actual_price = price - (price * 0.15);
+            }
+            JOptionPane.showMessageDialog(panel1, "The total price is Php " + String.format("%.2f", actual_price));
 
-        if(rbNone.isSelected()){
-            actual_price = price;
+            } else {
+                throw (new NoSelectionException("Select Your Order"));
+            }
+        }catch(NoSelectionException e){
+        JOptionPane.showMessageDialog(panel1, "Select Your Order");
         }
-        if(rb5.isSelected()){
-            actual_price = price - (price * 0.05);
-        }
-        if(rb10.isSelected()){
-            actual_price = price - (price * 0.1);
-        }
-        if(rb15.isSelected()){
-            actual_price = price - (price * 0.15);
-        }
-        JOptionPane.showMessageDialog(panel1, "The total price is Php " + String.format("%.2f", actual_price));
     }
 
     public void clearInputs(){
@@ -79,7 +92,6 @@ public class FoodOrderGUI extends JFrame {
         cTea.setSelected(false);
         cSundae.setSelected(false);
     }
-
 
     public static void main(String[] args){
         FoodOrderGUI food = new FoodOrderGUI();
