@@ -2,7 +2,7 @@ package LeapYear;
 
 import javax.swing.*;
 
-public class LeapYearGUI {
+public class LeapYearGUI extends JFrame{
     JFrame frame = new JFrame("Leap Year Checker");
     private JPanel panel1;
     private JTextField tfYear;
@@ -17,5 +17,8 @@ public class LeapYearGUI {
             }else{
                 JOptionPane.showMessageDialog(panel1, "Not a Leap Year");
             }
+    }
+    public static void main(String[] args){
+
     }
 }
